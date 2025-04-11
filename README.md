@@ -3,7 +3,7 @@
 Welcome to **SoWell**, a web-based application that serves as your personal, anonymous virtual therapist. This project integrates real-time face and emotion detection using a webcam with a conversational AI powered by Google Generative AI. The interface features a dynamic cityscape animation built with HTML, CSS, and Flask.
 
 ## Screenshots
-![App Preview](static/screenshot.png)
+![App Preview](static/css/screenshot.png)
 
 
 ---
