@@ -12,7 +12,6 @@ Welcome to **SoWell**, a web-based application that serves as your personal, ano
 - [Description](#description)
 - [Features](#features)
 - [Installation](#installation)
-- [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#license)
 - [Contact](#contact)
@@ -41,3 +40,66 @@ SoWell uses computer vision libraries (OpenCV and MTCNN) and deep learning (Deep
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/your-username/sowell-therapist.git
+Replace your-username and sowell-therapist with your GitHub username and repository name.
+
+2. ***Navigate to the project directory:***
+
+   ```bash
+   cd sowell-therapist
+
+3. ***Install dependencies:***
+   ```bash
+   pip install -r requirements.txt
+
+4. ***Set up your Google API key:***
+   - Create a .env file in the root directory.
+   - Add your API key like this:
+
+   ```bash
+   GOOGLE_API_KEY=your_api_key_here
+   #Ensure .env is listed in .gitignore to keep it secure.
+
+4. ***Run the application:***
+   ```bash
+   python together.py
+- Open your browser and go to:
+   ```bash
+   http://127.0.0.1:5000/
+   
+- Allow webcam access for real-time emotion detection.
+
+ - Use the chat interface (left side) to interact with SoWell. Type a message and click "Send".
+
+ - The right side shows the live video feed with emotion labels and a greeting.
+
+## Contributing
+Contributions are welcome! Follow these steps:
+
+### Fork the repository.
+
+1. Create a new branch:
+   ```bash
+   git checkout -b feature-branch
+
+2. Make your changes and commit:
+   ```bash
+   git commit -m "Add new feature"
+   
+3. Push to your fork:
+   ```bash
+   git push origin feature-branch
+   
+4. Open a pull request describing your changes.
+
+      - Please follow the existing code style and add clear comments where necessary.
+
+## License:
+ This project is licensed under the MIT License.
+ See the LICENSE file for details.
+
+## Contact:
+ For questions, suggestions, or to report an issue:
+ - Email: shaikhanis2004@gmail.com
+ - GitHub: https://github.com/anis196
+ - Author: Anis Shaikh
+ - Last updated: April 11, 2025
