@@ -1,93 +1,226 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="SoWell - Your Personal Therapist">
-  <meta name="keywords" content="SoWell, Personal Therapist, Chatbot, Emotion Detection">
-  <meta name="author" content="Anis Shaikh">
-  <title>SoWell - Your Personal Therapist</title>
-  <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script>
-    $(document).ready(function () {
-      $('#chatForm').on('submit', function (event) {
-        event.preventDefault();
-        var userMessage = $('#userMessage').val();
-        $('#userMessage').val('');
-  
-        // Append user's message
-        $('#chatBox').append('<p class="user-message"><strong>You: </strong> ' + userMessage + '</p>');
-        
-        $('#chatBox').animate({ scrollTop: $('#chatBox')[0].scrollHeight }, 500);
-
-        // Clear the input field
-        $('#userMessage').val('');
-
-        // Add "SoWell is typing..." indicator
-        var typingIndicator = $('<p id="typing-indicator" class="bot-message"><em>SoWell is typing...</em></p>');
-        $('#chatBox').append(typingIndicator);
-        $('#chatBox').scrollTop($('#chatBox')[0].scrollHeight);
-  
-        $.ajax({
-          url: "{{ url_for('chat') }}",
-          method: 'POST',
-          data: JSON.stringify({ message: userMessage }),
-          contentType: 'application/json',
-          success: function (response) {
-            // Remove typing indicator
-            $('#typing-indicator').remove();
-  
-            // Append bot's response
-            $('#chatBox').append('<p class="bot-message"><strong>SoWell: </strong> ' + response.bot_message + '</p>');
-  
-            // Scroll to bottom
-            $('#chatBox').scrollTop($('#chatBox')[0].scrollHeight);
-          }
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SoWell - Your Personal Therapist">
+    <meta name="keywords" content="SoWell, Personal Therapist, Chatbot, Emotion Detection">
+    <meta name="author" content="Anis Shaikh">
+    <title>SoWell - Your Personal Therapist</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#chatForm').on('submit', function (event) {
+                event.preventDefault();
+                var userMessage = $('#userMessage').val();
+                $('#chatBox').append('<p class="user-message"><strong>You: </strong> ' + userMessage + '</p>');
+                $('#chatBox').animate({ scrollTop: $('#chatBox')[0].scrollHeight }, 500);
+                $('#userMessage').val('');
+                var typingIndicator = $('<p id="typing-indicator" class="bot-message"><em>SoWell is typing...</em></p>');
+                $('#chatBox').append(typingIndicator);
+                $('#chatBox').scrollTop($('#chatBox')[0].scrollHeight);
+                $.ajax({
+                    url: "{{ url_for('chat') }}",
+                    method: 'POST',
+                    data: JSON.stringify({ message: userMessage }),
+                    contentType: 'application/json',
+                    success: function (response) {
+                        $('#typing-indicator').remove();
+                        $('#chatBox').append('<p class="bot-message"><strong>SoWell: </strong> ' + response.bot_message + '</p>');
+                        $('#chatBox').scrollTop($('#chatBox')[0].scrollHeight);
+                    }
+                });
+            });
         });
-      });
-    });
-  </script>  
+    </script>
 </head>
-<body background="{{ url_for('static', filename='back.png') }}">
-    <div class="header">
-    <div class="logos-container">
-        <img src="{{url_for('static',filename='css/truLog.jpg')}}" alt="Logo" class="logo">
-      <h1>SoWell - Your friendly anonymous Therapist</h1>
+<body>
+    <div class="wrap">
+        <div class="bg_area">
+            <div class="bg01 clearfix">
+                <div class="area">
+                    <!-- Background Elements -->
+                    <div class="field"></div>
+                    <div class="load">
+                        <div class="line"></div>
+                    </div>
+                    <div class="tree tree01"></div>
+                    <div class="tree tree02"></div>
+                    <div class="tree tree02 pos02"></div>
+                    <div class="tree tree03"></div>
+                    <div class="tree tree03 pos02"></div>
+                    <div class="hydrant pos01"></div>
+                    <div class="hydrant pos02"></div>
+                    <div class="back_building building01"></div>
+                    <div class="back_building building02"></div>
+                    <div class="back_building building03"></div>
+                    <div class="back_building building04"></div>
+                    <div class="sign">
+                        <div class="panel pos01"></div>
+                        <div class="panel pos02"></div>
+                        <div class="panel pos03"></div>
+                    </div>
+                    <div class="traffic_light">
+                        <div class="circle red"></div>
+                        <div class="circle yellow"></div>
+                        <div class="circle green"></div>
+                    </div>
+                    <div class="street_lamp street_lamp01">
+                        <div class="light left"></div>
+                        <div class="light right"></div>
+                    </div>
+                    <div class="street_lamp street_lamp02">
+                        <div class="light"></div>
+                    </div>
+                    <div class="cloud cloud01">
+                        <div class="circle circle01"></div>
+                        <div class="circle circle02"></div>
+                    </div>
+                    <div class="cloud cloud02">
+                        <div class="circle circle01"></div>
+                        <div class="circle circle02"></div>
+                        <div class="circle circle03"></div>
+                    </div>
+                    <div class="cloud cloud03">
+                        <div class="circle circle01"></div>
+                    </div>
+                    <div class="tower tower01">
+                        <div class="door door01"></div>
+                        <div class="chimney chimney01"></div>
+                        <div class="stair">
+                            <div class="side pos01">
+                                <div class="deck"></div>
+                            </div>
+                            <div class="side pos02">
+                                <div class="deck"></div>
+                            </div>
+                        </div>
+                        <div class="window window01" data-pos="0" data-h="0"></div>
+                        <div class="window window01" data-pos="1" data-h="1"></div>
+                        <div class="window window01" data-pos="2" data-h="2"></div>
+                        <div class="window window01" data-pos="3" data-h="3"></div>
+                        <div class="window window01" data-pos="4" data-h="4"></div>
+                        <div class="window window01" data-pos="5" data-h="5"></div>
+                        <div class="window window01" data-pos="6" data-h="6"></div>
+                        <div class="window window01" data-pos="7"></div>
+                    </div>
+                    <div class="tower tower02">
+                        <div class="door door02">
+                            <div class="deck"></div>
+                        </div>
+                        <div class="chimney chimney02"></div>
+                        <div class="window window01" data-pos="0"></div>
+                        <div class="window window01" data-pos="1"></div>
+                        <div class="window window01" data-pos="2"></div>
+                        <div class="window window01" data-pos="3"></div>
+                        <div class="window window01" data-pos="4"></div>
+                        <div class="window window01" data-pos="5"></div>
+                        <div class="window window01" data-pos="6"></div>
+                        <div class="window window01" data-pos="7"></div>
+                    </div>
+                    <div class="tower tower03">
+                        <div class="door door03">
+                            <div class="deck"></div>
+                        </div>
+                        <div class="floor">
+                            <div class="chimney chimney01"></div>
+                            <div class="window window02" data-pos="0" data-h="0"></div>
+                            <div class="window window02" data-pos="1" data-h="1"></div>
+                        </div>
+                        <div class="window window03"></div>
+                    </div>
+                    <div class="tower tower04">
+                        <div class="door door03">
+                            <div class="deck"></div>
+                        </div>
+                        <div class="billboard">
+                            <div class="deck"></div>
+                        </div>
+                        <div class="kiosk">
+                            <div class="deck01"></div>
+                            <div class="deck02"></div>
+                            <div class="deck03"></div>
+                            <div class="deck04"></div>
+                        </div>
+                    </div>
+                    <div class="tower tower05">
+                        <div class="door door03">
+                            <div class="deck"></div>
+                        </div>
+                        <div class="chimney chimney01"></div>
+                        <div class="kiosk">
+                            <div class="deck01"></div>
+                            <div class="deck02"></div>
+                            <div class="deck03"></div>
+                            <div class="deck04"></div>
+                        </div>
+                        <div class="window window01" data-pos="0"></div>
+                        <div class="window window01" data-pos="1"></div>
+                        <div class="window window01" data-pos="2"></div>
+                        <div class="window window01" data-pos="3"></div>
+                        <div class="window window01" data-pos="4"></div>
+                    </div>
+                    <div class="balloon balloon01">
+                        <div class="deck"></div>
+                    </div>
+                    <div class="balloon balloon02">
+                        <div class="deck"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="foreground">
+            <div class="header">
+                <div class="logos-container">
+                    <img src="{{url_for('static', filename='css/truLog.jpg')}}" alt="Logo" class="logo">
+                    <h1>SoWell - Your friendly anonymous Therapist</h1>
+                </div>
+                <div class="user-container">
+                    <h3>Welcome, buddy!</h3>
+                    <img src="{{url_for('static', filename='css/userLog.jpg')}}" alt="Logo" class="logo">
+                </div>
+            </div>
+            <div class="content">
+                <div class="left-section">
+                    <div class="card shadow p-3 mb-4">
+                        <div id="chatBox" class="overflow-auto"></div>
+                        <form id="chatForm" class="d-flex mt-2">
+                            <input type="text" id="userMessage" class="form-control me-2" placeholder="Type your message" required autofocus>
+                            <button type="submit" class="btn btn-success">
+                                <i class="fas fa-paper-plane"></i> Send
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div class="right-section">
+                    <div class="video-container">
+                        {% if greeting %}
+                        <div class="emotion-greeting">{{ greeting }}</div>
+                        {% endif %}
+                        <img src="{{ url_for('video') }}" alt="Video" />
+                    </div>
+                    <div class="info-box">
+                        <h2>RealTime Face and Emotion Detection</h2>
+                        <h3>I Offer You: 🙌</h3>
+                        <h5> 📌 Realtime emotion classification live from your camera</h5>
+                        <h5> 📌 I am your own personal buddy available 24/7</h5>
+                        <h5> 📌 I have the capability to change its tone according to your facial expressions.</h5>
+                    </div>
+                </div>
+            </div>
+            <footer>
+                <p>Designed with ❤ by Anis</p>
+            </footer>
+        </div>
     </div>
-    <div class="user-container">
-
-      <h3>Welcome, buddy!</h3>
-      <img src="{{url_for('static',filename='css/userLog.jpg')}}" alt="Logo" class="logo">
-
-    </div>
-  </div>
-  <div class="content">
-    <div class="left-section">
-      <div id="chatBox"></div>
-      <form id="chatForm">
-        <input type="text" id="userMessage" placeholder="Type your message here" required autofocus>
-        <button type="submit">Send!</button>
-      </form>
-    </div>
-    <div class="right-section">
-      <div class="video-container">
-        {% if greeting %}
-        <div class="emotion-greeting">{{ greeting }}</div>
-        {% endif %}
-        <img src="{{ url_for('video') }}" alt="Video" />
-      </div>
-      <div class="info-box">
-        <h2>RealTime Face and Emotion Detection</h2>
-        <h3>I Offer You: 🙌</h3>
-        <h5> 📌 Realtime emotion classification live from your camera</h5>
-        <h5> 📌 I am your own personal buddy available 24/7</h5>
-        <h5> 📌 I have the capability to change it's tone according to your facial expressions.</h5>
-      </div>
-    </div>
-  </div>
-  <footer>
-    <p>Designed with ❤ by Anis</p>
-  </footer>
 </body>
 </html>
